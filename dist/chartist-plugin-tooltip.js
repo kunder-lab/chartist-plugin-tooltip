@@ -131,7 +131,7 @@
               if (options.currencyFormatCallback != undefined) {
                 value = options.currencyFormatCallback(value, options);
               } else {
-                value = options.currency + value.replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, '$1,');
+                value = options.currency + value.replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, '$1.');
               }
             }
             value = '<span class="chartist-tooltip-value">' + value + '</span>';
@@ -265,29 +265,7 @@
    * @return HTMLElement
    */
   function offsetParent(elem) {
-    if (offsetParent in elem) {
-      // Using the native property if possible
-      var parent = elem.offsetParent;
-
-      if (!parent) {
-        parent = document.body.parentElement;
-      }
-
-      return parent;
-    }
-
-    var parent = elem.parentNode;
-    if (!parent) {
-      return document.body.parentElement;
-    }
-
-    if (window.getComputedStyle(parent).position !== 'static') {
-      return parent;
-    } else if (parent.tagName === 'BODY') {
-      return parent.parentElement;
-    } else {
-      return offsetParent(parent);
-    }
+    return '.ct-point'
   }
 
 }(window, document, Chartist));
